@@ -1,0 +1,28 @@
+<input type="text" id="nameInput" placeholder="Oluwadarasimi">
+<button onclick="generateStyles()">Generate</button>
+
+<div id="output"></div>
+
+<script>
+function generateStyles() {
+    const text = document.getElementById("nameInput").value;
+    const styles = [
+        text.toUpperCase(),
+        text.toLowerCase(),
+        text.split('').join(' '),
+        text.split('').reverse().join(''),
+        text.replace(/[a-z]/gi, c => 
+            String.fromCharCode(c.charCodeAt(0) + 65248)
+        )
+    ];
+
+    const outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = "";
+    
+    styles.forEach(style => {
+        const p = document.createElement("p");
+        p.textContent = style;
+        outputDiv.appendChild(p);
+    });
+}
+</script>
